@@ -11,5 +11,9 @@
 }
 
 #newGameBtn {
-    
+    padding: 15px;
+}
+
+#board {
+    color: gray;
 }

@@ -1,8 +1,8 @@
-let newGameBtn = document.querySelector('newGame');
-let board = document.querySelector('board');
+let newGameBtn = document.querySelector('#newGame');
+let board = document.querySelector('#board');
 let numOfSqrs = 15;
 
-newGameBtn.addEventListener('click', () => {
+newGameBtn.addEventListener('click', function() {
     let numOfSqrs = parseInt(window.prompt('How many squares do you want?', '15'), 10);
     if(numOfSqrs >= 100) {
         alert("Choose a number less than 100.");
@@ -26,6 +26,6 @@ function createBoard(spaces) {
 function createDiv() {
     let boardDiv = document.createElement('div');
     // boardDiv.classList.add('');
-    boardDiv.className = `new-div`;
+    boardDiv.className = `new_div`;
     return boardDiv;
 }
