@@ -1,31 +1,42 @@
-let newGameBtn = document.querySelector('#newGame');
+let changeBtn = document.querySelector('#change');
 let board = document.querySelector('#board');
-let numOfSqrs = 15;
+let numOfSqrs = 0;
 
-newGameBtn.addEventListener('click', function() {
-    let numOfSqrs = parseInt(window.prompt('How many squares do you want?', '15'), 10);
+changeBtn.addEventListener('click', function() {
+    numOfSqrs = parseInt(window.prompt('How many squares do you want?', '15'), 10);
+    console.log(numOfSqrs);
     if(numOfSqrs >= 100) {
         alert("Choose a number less than 100.");
+        return;
+    } else {
+        numOfSqrs = numOfSqrs * numOfSqrs;
+        startGame(numOfSqrs);
     }
-    startGame();
 });
 
-function startGame() {
-    createBoard(numOfSqrs);
+function startGame(sqrs) {
+    createBoard(sqrs);
 }
 
 function createBoard(spaces) {
-    let sqrs = [];
-
+    let boardPieces = [];
     for (i = 0; i < spaces; i++) {
-        sqrs.push(createDiv());
-        board.appendChild(sqrs[i]);
+        console.log("Created div " + i);
+        boardPieces.push(createDiv());
+        board.appendChild(boardPieces[i]);
     }
+    document.querySelectorAll(".board-piece").foreach(piece => {
+        piece.addEventListener('mouseover', function(){
+            piece.classList.add("hovering");
+        });
+        piece.addEventListener('mouseoff', function(){
+            piece.classList.add("colored");
+        });
+    })
 }
 
 function createDiv() {
     let boardDiv = document.createElement('div');
-    // boardDiv.classList.add('');
-    boardDiv.className = `new_div`;
+    boardDiv.classList.add("board-piece");
     return boardDiv;
 }
