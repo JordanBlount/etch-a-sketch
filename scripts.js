@@ -3,6 +3,9 @@ let board = document.querySelector('#board');
 let currentNumSpaces = 0;
 let boardPieces = [];
 
+// Initial game
+// startGame((16 * 16));
+
 // Examine the logic here. We need the game to be pre-setup with 16 * 16.
 // We need to be able to ask for new number of squares, clear board if
 // needed, create new board. 
@@ -18,7 +21,6 @@ changeBtn.addEventListener('click', function() {
         return;
     } else {
         numOfSqrs = numOfSqrs * numOfSqrs;
-        currentNumSpaces = numOfSqrs;
         startGame(numOfSqrs);
     }
 });
@@ -30,12 +32,22 @@ function startGame(sqrs) {
 function clearBoard(sqrs) {
     for (i = 0; i < sqrs; i++) {
         board.removeChild(boardPieces[i]);
-        console.log("Created square " + i);
+        console.log("Removed square " + i);
     }
 }
 
 function createBoard(spaces) {
+    // Check syntax here because it is probably wrong
+    // Deletion and reset of all logic goes here
+    if(boardPieces.length >= 1) {
+        clearBoard(currentNumSpaces);
+        boardPieces = [];     
+    }
+    // All syntax needed to setup new game goes here.
+    // # of new pieces, current number of pieces, board pieces array,
+    // creation of new pieces
     boardPieces = [];
+    currentNumSpaces = spaces;
     for (i = 0; i < spaces; i++) {
         boardPieces.push(createDiv());
         board.appendChild(boardPieces[i]);
