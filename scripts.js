@@ -14,34 +14,35 @@ let boardPieces = [];
 // This button is for the player to select the size of the grid. 16 * 16
 // example.
 changeBtn.addEventListener('click', function() {
-    let numOfSqrs = parseInt(window.prompt('How many squares do you want?', '16'), 10);
-    console.log(numOfSqrs);
-    if(numOfSqrs >= 100) {
-        alert("Choose a number less than 100.");
-        return;
-    } else {
-        numOfSqrs = numOfSqrs * numOfSqrs;
-        startGame(numOfSqrs);
-    }
+    createBoard(0);
 });
-
-function startGame(sqrs) {
-    createBoard(sqrs);
-}
 
 function clearBoard(sqrs) {
     for (i = 0; i < sqrs; i++) {
         board.removeChild(boardPieces[i]);
+        boardPieces.splice(boardPieces[i], 1); //CHECK THIS
         console.log("Removed square " + i);
     }
+    boardPieces = [];
+    currentNumSpaces = 0;
 }
 
 function createBoard(spaces) {
-    // Check syntax here because it is probably wrong
-    // Deletion and reset of all logic goes here
+    if(spaces == 0) {
+        spaces = parseInt(window.prompt('How many squares do you want?', '16'), 10);    
+    }
+    // TODO: Check docs for how to use if statements correctly.
+    if(spaces >= 100 || !Number.isInteger(spaces) || spaces <= 0) {
+        alert("Choose another number! Less than 100!");
+        createBoard(0);
+        return;
+    } else {
+        spaces = spaces * spaces;
+        startGame(spaces);
+    }
+    // Checks to see if there are any pieces so they can be deleted.
     if(boardPieces.length >= 1) {
-        clearBoard(currentNumSpaces);
-        boardPieces = [];     
+        clearBoard(currentNumSpaces);   
     }
     // All syntax needed to setup new game goes here.
     // # of new pieces, current number of pieces, board pieces array,
@@ -51,7 +52,6 @@ function createBoard(spaces) {
     for (i = 0; i < spaces; i++) {
         boardPieces.push(createDiv());
         board.appendChild(boardPieces[i]);
-        console.log("Created square " + i);
     }
 }
 

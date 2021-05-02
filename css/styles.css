@@ -1,7 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-family: 'Lato', sans-serif;
 }
 
@@ -33,17 +33,21 @@ body {
 
 #board {
     background-color: rgb(165 165 165);
-    border: 2px solid rgb(97 97 97 / 49%);
+    /* border: 2px solid rgb(97 97 97 / 49%); */
     width: 600px;
     height: 600px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.board-piece {
+#board > * {
     background-color: white;
     border: 1px solid black;
-    flex-grow: 1;
-    width: 10px;
-    height: 10px;
+    flex: 1 0 20%;
 }
+
+/* .board-piece {
+    background-color: white;
+    border: 1px solid black;
+    flex: 1 1 100%;
+} */
