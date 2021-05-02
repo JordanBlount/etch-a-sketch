@@ -52,17 +52,22 @@ function createBoard(spaces) {
 
 function createDiv() {
     let square = document.createElement('div');
-    // boardDiv.classList.add("board-piece");
-    square.setAttribute('class', 'board-piece');
-    // boardDiv.addEventListener('mouseover', function(){
-    //     piece.classList.add("hovering");
-    // });
+    square.setAttribute('class', 'board-piece');    
+    square.addEventListener('mouseenter', function(){
+        square.style.backgroundColor = '#505050';
+    });
     // boardDiv.addEventListener('mouseoff', function(){
     //     piece.classList.add("colored");
     // });
     return square;
 }
 
-function color() {
-    return;
+function color(currentColor) {
+    let newColor
+    switch(currentColor) {
+        case 'white':
+            newColor = 'rgb(0 0 0 / 10%)'
+        break;
+    }
+    return newColor;
 }
