@@ -53,6 +53,7 @@ function createBoard(spaces) {
 function createDiv() {
     let square = document.createElement('div');
     square.setAttribute('class', 'board-piece');    
+    // TODO: Set the color using a function
     square.addEventListener('mouseenter', function(){
         square.style.backgroundColor = '#505050';
     });
@@ -62,6 +63,7 @@ function createDiv() {
     return square;
 }
 
+// TODO: Make this generate random colors
 function color(currentColor) {
     let newColor
     switch(currentColor) {
