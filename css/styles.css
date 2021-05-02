@@ -33,21 +33,13 @@ body {
 
 #board {
     background-color: rgb(165 165 165);
-    /* border: 2px solid rgb(97 97 97 / 49%); */
+    border: 2px solid rgb(97 97 97 / 49%);
     width: 600px;
     height: 600px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 }
 
 #board > * {
     background-color: white;
     border: 1px solid black;
-    flex: 1 0 20%;
 }
-
-/* .board-piece {
-    background-color: white;
-    border: 1px solid black;
-    flex: 1 1 100%;
-} */
