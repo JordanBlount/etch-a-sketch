@@ -1,29 +1,15 @@
 let changeBtn = document.querySelector('#change');
 let board = document.querySelector('#board');
 let currentNumSpaces = 0;
-let boardPieces = [];
 
-// Initial game
-// startGame((16 * 16));
+// createBoard(16);
 
-// Examine the logic here. We need the game to be pre-setup with 16 * 16.
-// We need to be able to ask for new number of squares, clear board if
-// needed, create new board. 
-// 
-
-// This button is for the player to select the size of the grid. 16 * 16
-// example.
 changeBtn.addEventListener('click', function() {
     createBoard(0);
 });
 
 function clearBoard(sqrs) {
-    for (i = 0; i < sqrs; i++) {
-        board.removeChild(boardPieces[i]);
-        boardPieces.splice(boardPieces[i], 1); //CHECK THIS
-        console.log("Removed square " + i);
-    }
-    boardPieces = [];
+    board.innerHTML = '';
     currentNumSpaces = 0;
 }
 
@@ -38,20 +24,18 @@ function createBoard(spaces) {
         return;
     } else {
         spaces = spaces * spaces;
-        startGame(spaces);
     }
     // Checks to see if there are any pieces so they can be deleted.
-    if(boardPieces.length >= 1) {
+    if(currentNumSpaces >= 1) {
         clearBoard(currentNumSpaces);   
     }
     // All syntax needed to setup new game goes here.
     // # of new pieces, current number of pieces, board pieces array,
     // creation of new pieces
-    boardPieces = [];
     currentNumSpaces = spaces;
     for (i = 0; i < spaces; i++) {
-        boardPieces.push(createDiv());
-        board.appendChild(boardPieces[i]);
+        let newPiece = createDiv();
+        board.appendChild(newPiece);
     }
 }
 
